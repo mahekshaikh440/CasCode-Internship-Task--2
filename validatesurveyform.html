@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Survey Form</title>
+</head>
+<body>
+    <div class="group">
+        <header class="header">
+            <h1 id="title" class="text-center">Product survey form</h1>
+            <p id="description" class="description text-center">Thank you for using this product</p>
+        </header>
+        <form id="survey-form">
+            <div  class="form-group">
+                <strong>
+                    <label id="name-label" for="name">Name</label><br></br>
+                </strong>
+                <input type="text"  id="person-name" class="form-control" placeholder="Enter your name" onkeyup="validateName()" required/>
+                <span id="name-error"></span>
+            </div>
+            <div class="form-group">
+                <strong>
+                    <label id="email-label" for="email">Email</label><br></br>
+                </strong>
+                <input type="email"  id="person-email" class="form-control" placeholder="Enter your Email" onkeyup="validateEmail()" required>
+                <span id="email-error"></span>
+            </div>
+            <div class="form-group">
+                <strong>
+                    <label id="number-label" for="number">Age</label><br></br>
+                </strong>
+                <input type="number" name="age" id="number" class="form-control" placeholder="Age">
+            </div>
+            <div class="form-group">
+                <strong>
+                    <label id="phone-label" for="contact">Mobile NO</label><br></br>
+                </strong>
+                <input type="tel" name="mobile" id="person-contact" class="form-control" placeholder="Mobile No"  required>
+            </div>
+            <div class="form-group">
+                <p>Which option describes your current role?</p>
+                <select id="dropdown" name="role" class="form-control">
+                    <option>Select current role</option>
+                    <option value="Student">Student</option>
+                    <option value="Working">Working</option>
+                    <option value="Bussiness">Bussiness</option>
+                    <option value="Home maker">Home maker</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <p>Select your Gender?</p>
+                <label>
+                    <input type="radio" name="gender" value="Male" class="input-radio"/>Male</label><br></br>
+                    <label>
+                        <input type="radio" name="gender" value="Female" class="input-radio"/>Female</label><br></br>
+                    <label>
+                        <input type="radio" name="gender" value="Other" class="input-radio"/>Other</label><br></br>
+            </div>
+            <div class="form-group">
+                <p>Would you recommend this product to others?</p>
+                <label>
+                <input type="radio" name="user-recommend" value="Definitely" class="input-radio"/>Definitely</label><br></br>
+                <label>
+                <input type="radio" name="user-recommend" value="Maybe" class="input-radio"/>Maybe</label><br></br>
+                <label>
+                <input type="radio" name="user-recommend" value="Not sure" class="input-radio"/>Not sure</label><br></br>
+            </div>
+            <div class="form-group">
+                <p>How did you learn about this product?</p>
+                <label>
+                    <input type="radio" name="user-learn" value="Television" class="input-radio"/>Television</label><br></br>
+                <label>
+                    <input type="radio" name="user-learn" value="Newspaper" class="input-radio"/>Newspaper</label><br></br>
+                <label>
+                    <input type="radio" name="user-learn" value="Internet" class="input-radio"/>Internet</label><br></br>
+                <label>
+                    <input type="radio" name="user-learn" value="Friend" class="input-radio"/>Friend</label><br></br>
+                <label>
+                    <input type="radio" name="user-learn" value="Other" class="input-radio"/>Other</label><br></br>
+            </div>
+            <div class="form-group">
+                <P>Any comments or suggestion?</P>
+                <textarea id="comments" class="input-textarea" name="comment" placeholder="Enter your comment here..."></textarea>
+            </div>
+            <button type="submit" id="submit" value="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    
+    <script>
+        var nameError=document.getElementById('name-error');
+        var emailError=document.getElementById('email-error');
+
+        function validateName(){
+            var name=document.getElementById('person-name').value;
+            if(name.length==0){
+                nameError.innerHTML="Name is required";
+                return false;
+            }
+            else if(!name.match(/^[a-zA-Z]+$/)){
+                nameError.innerHTML="Name can't have a number";
+                return false;
+            }
+            else{
+            nameError.innerHTML="";
+            return true;
+            }
+        }
+
+        function validateEmail(){
+            var email=document.getElementById('person-email').value;
+            var atpos=email.indexOf("@");
+            var dotpos=email.lastIndexOf(".");
+            if(atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length){
+                emailError.innerHTML="Please enter a valid email";
+                return false
+            }
+            emailError.innerHTML="";
+            return true;
+        }
+    </script>
+</body>
+</html>
